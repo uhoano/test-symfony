@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class PostController extends AbstractController
+class HomeController extends AbstractController
 {
     /**
-     * @Route("/post/{search}", name="post", defaults={"search":""})
+     * @Route("/home/{search}", name="home", defaults={"search":""})
      */
     public function index($search, EntityManagerInterface $manager, PostRepository $postRepo): Response
     {
@@ -23,7 +23,7 @@ class PostController extends AbstractController
         } else {
             $items = $postRepo->findAll();
         }
-        return $this->render('post/index.html.twig', [
+        return $this->render('home/index.html.twig', [
             'items' => $items,
         ]);
     }
